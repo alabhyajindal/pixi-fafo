@@ -26,11 +26,11 @@ body {
   background-color: #fff;
   border-radius: 4px;
   padding: 1rem 3rem;
-  border: 1px solid black;
+  border: 1px solid #111;
   display: flex;
   justify-content: center;
   cursor: pointer;
-  transition: 0.1s linear;
+  transition: all 0.1s linear;
 }
 
 .node:hover {
