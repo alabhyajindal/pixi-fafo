@@ -15,6 +15,34 @@ for (let i = 0; i < 300; i++) {
 
   app.stage.addChild(graphy);
 
-  graphy.x = Math.floor(Math.random() * 600) + 20;
+  graphy.x = Math.floor(Math.random() * 500) + 20;
   graphy.y = Math.floor(Math.random() * 500) + 10;
+
+  // Add click handler
+  graphy.interactive = true;
+  graphy.buttonMode = true;
+  graphy.on('pointerdown', onDragStart);
+  graphy.on('pointerup', onDragEnd);
+  graphy.on('pointerupoutside', onDragEnd);
+  graphy.on('pointermove', onDragMove);
+}
+
+function onDragStart(event) {
+  this.data = event.data;
+  this.alpha = 0.5;
+  this.dragging = true;
+}
+
+function onDragEnd() {
+  this.alpha = 1;
+  this.dragging = false;
+  this.data = null;
+}
+
+function onDragMove() {
+  if (this.dragging) {
+    const newPosition = this.data.getLocalPosition(this.parent);
+    this.x = newPosition.x;
+    this.y = newPosition.y;
+  }
 }
